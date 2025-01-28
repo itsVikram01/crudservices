@@ -12,7 +12,6 @@ import java.util.Optional;
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
     private final EmployeeRepo employeeRepo;
-
     public EmployeeDaoImpl(EmployeeRepo employeeRepo) {
         this.employeeRepo = employeeRepo;
     }

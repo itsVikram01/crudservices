@@ -3,7 +3,6 @@ package com.crud.controller;
 import com.crud.exception.ResourceNotFoundException;
 import com.crud.model.Employee;
 import com.crud.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/crudwithdao/employees")
+@RequestMapping("/crud/employees")
 public class EmployeeController {
     /*without dao and daoImp*/
     /*@Autowired
@@ -99,9 +98,9 @@ public class EmployeeController {
     @PutMapping("/employee/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails){
         Employee emp = employeeService.findEmployeeById(id).orElseThrow( () -> new ResourceNotFoundException("Employee not exist with {}", id) );
-        /*emp.setFirstName(employeeDetails.getFirstName());
+        emp.setFirstName(employeeDetails.getFirstName());
         emp.setLastName(employeeDetails.getLastName());
-        emp.setEmailId(employeeDetails.getEmailId());*/
+        emp.setEmailId(employeeDetails.getEmailId());
 
         Employee updatedEmployee = employeeService.updateEmployee(emp);
         return ResponseEntity.ok(updatedEmployee);
