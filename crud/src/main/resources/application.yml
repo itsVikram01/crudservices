@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: crud
+# Datasource
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/crud?createDatabaseIfNotExist=true
+# JPA
+  jpa:
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+# Pagination
+  data:
+    web:
+      pageable:
+        default-pageSize: 10
+        max-pageSize: 10
+        page-parameter: pageNo
+        size-parameter: pageSize
