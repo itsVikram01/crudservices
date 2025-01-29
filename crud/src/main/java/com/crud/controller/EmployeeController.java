@@ -1,6 +1,6 @@
 package com.crud.controller;
 
-import com.crud.exception.ResourceNotFoundException;
+import com.crud.exception.using_ResponseStatus.ResourceNotFoundException;
 import com.crud.model.Employee;
 import com.crud.service.EmployeeService;
 import org.springframework.data.domain.Page;
@@ -67,6 +67,14 @@ public class EmployeeController {
         Page<Employee> items = employeeService.getAllDataInPaging(pageNo, pageSize);
         return ResponseEntity.ok(items);
     }*/
+
+
+    /*You can define exception-handling methods directly in your controller using the @ExceptionHandler annotation. These methods handle exceptions only for the associated controller.*/
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> handleIllegalArgumentException(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
 
 
     /*with dao and daoImpl*/
